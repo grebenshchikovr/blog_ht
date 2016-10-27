@@ -19,6 +19,7 @@ class LinksController < ApplicationController
 
   # GET /links/1/edit
   def edit
+   
   end
 
   # POST /links
@@ -26,7 +27,13 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
 
+    if @link.url.start_with?("https") || @link.url.start_with?("http")
+    else 
+      @link.url = "http://" + @link.url      
+    end
+
     respond_to do |format|
+      
       if @link.save
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
@@ -40,7 +47,14 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
+
     respond_to do |format|
+
+      if @link.url.start_with?("https") || @link.url.start_with?("http")
+    else 
+      @link.url = "http://" + @link.url      
+    end
+    
       if @link.update(link_params)
         format.html { redirect_to @link, notice: 'Link was successfully updated.' }
         format.json { render :show, status: :ok, location: @link }
@@ -69,6 +83,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:url)
+      params.require(:link).permit(:url, :description)
     end
 end
