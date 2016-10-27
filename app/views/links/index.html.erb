@@ -6,8 +6,8 @@
 
   <hr>
   <% @links.each do |link| %>
-    <p><h4><a href="<%= link.url %>">
-    <%= link.description.capitalize %> </a></h4></p>
+    <p><h4><%= link_to link.description, link.url %>
+    </h4></p>
     <p><%= link_to 'Show', link %> | <%= link_to 'Edit', edit_link_path(link) %> | <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></p>
     <hr>
     <% end %>

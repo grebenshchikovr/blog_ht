@@ -7,7 +7,7 @@
 <div class="row">
   <% @images.each do |image| %>
   <div class="col-md-3">
-     <img src="<%= image.link %>" height="250">
+    <%= image_tag(image.link, :size => '260x180') %> 
      <br>
      <%= image.description %>
      <br>
