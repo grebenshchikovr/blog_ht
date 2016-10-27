@@ -27,10 +27,10 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
 
-    if @link.url.start_with?("https") || @link.url.start_with?("http")
-    else 
-      @link.url = "http://" + @link.url      
-    end
+    # if @link.url.start_with?("https") || @link.url.start_with?("http")
+    # else 
+    #   @link.url = "http://" + @link.url      
+    # end
 
     respond_to do |format|
       
@@ -48,13 +48,8 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1.json
   def update
 
-    respond_to do |format|
+    respond_to do |format|    
 
-      if @link.url.start_with?("https") || @link.url.start_with?("http")
-    else 
-      @link.url = "http://" + @link.url      
-    end
-    
       if @link.update(link_params)
         format.html { redirect_to @link, notice: 'Link was successfully updated.' }
         format.json { render :show, status: :ok, location: @link }
