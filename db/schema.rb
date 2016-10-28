@@ -11,34 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027211615) do
+ActiveRecord::Schema.define(version: 20161027124115) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
     t.string   "author"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "images", force: true do |t|
     t.text     "link"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "desription"
   end
 
   create_table "links", force: true do |t|
     t.text     "url"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
   end
 
   create_table "posts", force: true do |t|
     t.text     "body"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
   end
 
 end
