@@ -24,6 +24,8 @@
 <h2><%= t('comments.comment_add')%></h2>
 <p>
 <%= form_for [@commentable, @commentable.comments.build] do |f| %>
+	
+	 
 	<p>
 		<%= f.label :author %><br />
 		<%= f.text_field :author %>

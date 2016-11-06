@@ -13,7 +13,9 @@ def create
     #redirect_to :id => nil
     redirect_to @commentable
   else
-    render :action => 'new'
+    flash[:notice] = @comment.errors.full_messages.inspect
+    #redirect_to :id => nil
+    redirect_to @commentable
   end
 end
 
